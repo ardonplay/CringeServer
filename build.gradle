@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'io.github.ardonplay'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClass = 'io.github.ardonplay.Main'
+}
+dependencies {
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.9'
+    implementation group: 'org.ini4j', name: 'ini4j', version: '0.5.4'
+    implementation group: 'com.google.guava', name: 'guava', version: '32.1.2-jre'
+
+    implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.4.11'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.11'
+
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
