@@ -1,4 +1,4 @@
-package io.github.ardonplay;
+package io.github.ardonplay.megaserver.utils;
 
 import org.ini4j.Ini;
 import org.slf4j.Logger;
@@ -19,8 +19,8 @@ public class Configuration {
 
     private Map<String, Map<String, String>> parseIniFile(File fileToParse)
             throws IOException {
-        Ini ini = new Ini(fileToParse);
-        return ini.entrySet().stream()
+
+        return new Ini(fileToParse).entrySet().stream()
                 .collect(toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
@@ -30,14 +30,15 @@ public class Configuration {
         logger.warn("Config: {}", keys);
     }
 
-    public String getHost(){
+    public String getHost() {
         return keys.get("host");
     }
-    public int getPort(){
+
+    public int getPort() {
         return Integer.parseInt(keys.get("port"));
     }
 
-    public String getPath(){
+    public String getPath() {
         return keys.get("path");
     }
 
